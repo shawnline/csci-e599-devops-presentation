@@ -49,7 +49,7 @@ env:
   DEPLOYMENT_NAME: 'gke-test' # Update to your deployment name
   REPOSITORY: 'devops' # Update to your Artifact Registry docker repository name
   IMAGE: 'nginx'
-  WORKLOAD_IDENTITY_PROVIDER: 'projects/123456789/locations/global/workloadIdentityPools/my-pool/providers/my-provider' # TODO: update to your workload identity provider
+  WORKLOAD_IDENTITY_PROVIDER: 'projects/346591137340/locations/global/workloadIdentityPools/default-pool/providers/google' # TODO: update to your workload identity provider
 
 jobs:
   build:
