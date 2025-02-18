@@ -60,6 +60,14 @@ jobs:
         with:
           cluster_name: '${{ env.GKE_CLUSTER }}'
           location: '${{ env.GKE_REGION }}'
+      
+      - name: 'Authenticate Docker to Google Artifact Registry'
+        run: |-
+          gcloud auth configure-docker us-central1-docker.pkg.dev
+
+      - name: 'Login to Google Artifact Registry'
+        run: |-
+          gcloud auth print-access-token | docker login -u oauth2accesstoken --password-stdin us-central1-docker.pkg.dev
 
       # Build the Docker image
       - name: 'Build and push Docker container'
