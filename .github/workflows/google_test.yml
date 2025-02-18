@@ -13,7 +13,7 @@ env:
   GAR_LOCATION: 'us-central1'
   GKE_REGION: 'us-central1'
   GKE_CLUSTER: 'cluster-1'
-  DEPLOYMENT_NAME: 'gke-test'
+  DEPLOYMENT_NAME: 'nginx-app'
   REPOSITORY: 'devops'
   IMAGE: 'nginx'
   WORKLOAD_IDENTITY_PROVIDER: 'projects/346591137340/locations/global/workloadIdentityPools/github-actions-pool/providers/google' # TODO: update to your workload identity provider
@@ -87,8 +87,11 @@ jobs:
       # Deploy the Docker image to the GKE cluster
       - name: 'Deploy to GKE'
         run: |-
-          # replacing the image name in the k8s template
-          ./kustomize edit set image LOCATION-docker.pkg.dev/PROJECT_ID/REPOSITORY/IMAGE:TAG=$GAR_LOCATION-docker.pkg.dev/$PROJECT_ID/$REPOSITORY/$IMAGE:$GITHUB_SHA
-          ./kustomize build . | kubectl apply -f -
-          kubectl rollout status deployment/$DEPLOYMENT_NAME
+          kubectl apply -f k8s/deployment.yml
+          kubectl apply -f k8s/service.yml
+
+          # Wait for the deployment to complete
+          kubectl rollout status deployment/${{ env.DEPLOYMENT_NAME }}
+    
+          # Check running services
           kubectl get services -o wide
