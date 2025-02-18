@@ -70,7 +70,7 @@ jobs:
             --build-arg GITHUB_SHA="${GITHUB_SHA}" \
             --build-arg GITHUB_REF="${GITHUB_REF}" \
             .
-          docker push "${DOCKER_TAG}"
+          docker push "${GAR_LOCATION}-docker.pkg.dev/${PROJECT_ID}/${REPOSITORY}/${DOCKER_TAG}"
       # Set up kustomize
       - name: 'Set up Kustomize'
         run: |-
