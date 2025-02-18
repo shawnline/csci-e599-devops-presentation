@@ -35,8 +35,9 @@ name: 'Build and Deploy to GKE'
 
 on:
   push:
-    branches:
-      - '"master"'
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
 
 env:
   PROJECT_ID: 'clauks-188222' # Update to your Google Cloud project ID
@@ -51,7 +52,7 @@ env:
   WORKLOAD_IDENTITY_PROVIDER: 'projects/123456789/locations/global/workloadIdentityPools/my-pool/providers/my-provider' # TODO: update to your workload identity provider
 
 jobs:
-  setup-build-publish-deploy:
+  build:
     name: 'Setup, Build, Publish, and Deploy'
     runs-on: 'ubuntu-latest'
     environment: 'production'
