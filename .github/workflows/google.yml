@@ -46,8 +46,6 @@ env:
   GAR_LOCATION: 'us-central1' # Update to your region
   GKE_ZONE: 'us-central1-c' # Update to your cluster zone
   GKE_CLUSTER: 'cluster-1' # Update to your cluster name
-  GKE_CLUSTER: 'cluster-1' # Update to your cluster name
-  GKE_ZONE: 'us-central1-c' # Update to your cluster zone
   DEPLOYMENT_NAME: 'gke-test' # Update to your deployment name
   REPOSITORY: 'devops' # Update to your Artifact Registry docker repository name
   IMAGE: 'nginx'
