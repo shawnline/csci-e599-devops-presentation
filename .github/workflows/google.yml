@@ -38,6 +38,8 @@ on:
     branches: [ "master" ]
   pull_request:
     branches: [ "master" ]
+  workflow_dispatch:
+    branches: [ "master" ]
 
 env:
   PROJECT_ID: 'clauks-188222' # Update to your Google Cloud project ID
