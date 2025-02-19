@@ -90,6 +90,8 @@ jobs:
           kubectl apply -f k8s/deployment.yml
           kubectl apply -f k8s/service.yml
 
+          kubectl set image deployment/nginx-app nginx-app-container=${GAR_LOCATION}-docker.pkg.dev/${PROJECT_ID}/${REPOSITORY}/${IMAGE}:${GITHUB_SHA} --record
+
           # Wait for the deployment to complete
           kubectl rollout status deployment/${{ env.DEPLOYMENT_NAME }}
     
